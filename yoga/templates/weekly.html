@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block navbar %}
+    <li><a href="/">Home</a></li>
+    <li><a href="/activity">Activity</a></li>
+    <li><a href="/leaderboard">Leaderboard</a></li>
+    <li class="active"><a href="/previousweeks">Previous weeks</a></li>
+{% endblock %}
+
+
+{% block content %}
+
+		<p>
+			<a href="/" title="Home"><img src="{% static 'img/logo_meditation_sunset.jpg' %}" alt="logo yoga" id ="logo" style="width: 20%;"> </a>
+		</p>
+		<h1> Week of 20th February </h1>
+		<ol>
+			<li> User 1</li>
+			<li> User 2 </li>
+			<li> User 3 </li>
+		</ol>
+		<p>
+		</p>
+
+{% endblock %}

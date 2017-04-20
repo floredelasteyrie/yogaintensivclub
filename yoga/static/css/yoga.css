@@ -1,0 +1,145 @@
+html, body 
+{
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+body 
+{
+  padding-top: 70px;
+}
+footer 
+{
+  padding: 30px 0;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  background: #222222;
+  margin-top:30px;
+  color: teal;
+}
+
+footer a
+{
+  color: teal;
+}
+
+footer a:hover
+{
+  color: white;
+}
+
+section
+{
+  background-color: #ededed;
+  padding: 5px;
+  border-radius: 10px;
+  border:solid 1px #dbdbdb;
+}
+
+/*-----BUTTONS -------------------------------------------*/
+.btn-custom1
+{
+    background-color: white;
+    color: teal;
+    margin:5px;
+    margin-top: 8px;
+    border-radius: 20px;
+}
+
+.btn-custom1:hover
+{
+    background-color: #5dadad;
+    color: white;
+    margin:5px;
+    margin-top: 8px;
+    border-radius: 20px;
+}
+
+.btn-custom2
+{
+    background-color: teal;
+    color: white;
+    margin:5px;
+    margin-top: 8px;
+    border-radius: 20px;
+}
+
+.btn-custom2:hover
+{
+    background-color: #5dadad;
+    color: white;
+    margin:5px;
+    margin-top: 8px;
+    border-radius: 20px;
+}
+/*---END-BUTTONS --------------------------------------------*/
+
+
+/*-----NAVBAR ----------------------------------------------*/
+.navbar {
+    background-color: teal;
+}
+/* title */
+.navbar .navbar-brand {
+    color: white;
+}
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+    color: #669e9e;
+}
+/* link */
+.navbar .navbar-nav > li > a {
+    color: #abcece;
+}
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li > a:focus {
+    color: white;
+    background-color: #abcece;
+}
+.navbar .navbar-nav > .active > a, 
+.navbar .navbar-nav > .active > a:hover, 
+.navbar .navbar-nav > .active > a:focus {
+    color: white;
+    background-color: #669e9e;
+}
+/*---END-NAVBAR---------------------------------------------*/
+
+@media (max-width: 991px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in { 
+        display: block!important;
+    }
+    .collapsing {
+        overflow: hidden!important;
+    }
+}
+
+@grid-float-breakpoint (min-width: 1000px )
+

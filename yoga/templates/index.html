@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+            <div class = "jumbotron" style="background-color: white;">
+            <div class="row">
+                <div class = "col-lg-10 col-lg-offset-1" style="text-align: center;">
+                	<h1>The Yoga Tracker</h1>
+                    <img src="{% static 'img/number1.jpg' %}" class="img-responsive" alt="Logo yoga" style="max-height : 10em; display: block; margin:0 auto; ">
+                </div>
+            </div>
+            </div>
+
+			<div class="col-lg-6" style="text-align: center; margin-top: 2em;">
+			<section id="Activity"><!--Activity -->
+
+					<!-- Form Name -->
+					<legend>Register new activity</legend>
+
+					<form method="post">
+					    {% csrf_token %}
+					    <p>Quel sport ? {{ form.sport }}</p>
+					    <p>Quelle durée (en min) ? {{ form.duree }}</p>
+					    
+					    <button type="submit">Submit</button>
+					</form>
+
+                    {% if envoi %}Votre activitée a bien été enregistrée !{% endif %}
+
+			</section>
+			</div>
+
+			<div class="col-lg-6" style="text-align: center; margin-top: 2em;">
+			<section id="Leaderboard"> <!-- Leader board -->
+				<h2> Leaderboard</h2>
+				<h3> Week: 20th February</h3>
+				<ul>
+					<li> Number 1: </li>
+					<li> Number 2: </li>
+					<li> Number 3: </li>
+				</ul>
+			</section>
+			</div>
+		
+{% endblock %}

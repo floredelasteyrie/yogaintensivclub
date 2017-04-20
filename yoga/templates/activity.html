@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block navbar %}
+    <li><a href="/">Home</a></li>
+    <li class="active"><a href="/activity">Activity</a></li>
+    <li><a href="/leaderboard">Leaderboard</a></li>
+    <li><a href="/previousweeks">Previous weeks</a></li>
+{% endblock %}
+
+{% block content %}
+
+	<div class="col-md-10 col-md-offset-1" style="text-align: center;">
+		<br /><br />
+		<h2> Your activity </h2>
+		{% for activité in activitées %}
+
+			<h3>{{ activité.sport }}
+                {%  if request.user == activité.user %}
+                    <a href="/suppr_activity/{{ activité.id }}" id="suppr">
+                        <span class="glyphicon glyphicon-remove" style="color: black; font-size: 15px;"></span>
+                    </a>
+                {%  endif %}
+            </h3>
+            <p><strong>{{  activité.durée }} min</strong> - le {{ activité.date }} par  <strong>{{ activité.user.first_name }}</strong></p>
+
+
+
+		{% empty %}
+		<p> No activity .. </p>
+		{% endfor %}
+		<p>
+		</p>
+	</div>
+
+{% endblock %}
