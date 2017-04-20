@@ -11,13 +11,10 @@
 
 {% block content %}
 
-		<h2> Week of 20th February </h2>
-		<ol>
-			<li> User 1</li>
-			<li> User 2 </li>
-			<li> User 3 </li>
-		</ol>
 		<p>
+        {%  for tab in tableau %}
+            {{ tab.utilisateur.first_name }} a fait {{ tab.temps }} min en {{ tab.sport }} </br>
+        {% endfor %}
 		</p>
 
 {% endblock %}

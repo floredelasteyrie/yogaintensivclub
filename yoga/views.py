@@ -55,7 +55,7 @@ def activity(request):
     if not request.user.is_authenticated:
         return redirect("/login")
 
-    activity = Activity.objects.all()
+    activity = Activity.objects.all().order_by("-date")
     return render(request, "activity.html", {'activitées' :activity})
 
 def suppr_activity(request,id):
@@ -73,7 +73,25 @@ def leaderboard(request):
     if not request.user.is_authenticated:
         return redirect("/login")
 
-    return render(request, "leaderboard.html")
+    userlist = User.objects.all()
+    sportlist = Activity.objects.all()
+    tableau = []
+    print(len(userlist))
+    compteur = 0
+    for sport in sportlist:
+        for utilisateur in userlist:
+            activitylist = Activity.objects.filter(user=utilisateur,sport=sport)
+            temps = 0
+            for activitée in activitylist:
+                temps += activitée.durée
+            trinome = {'temps': temps, 'utilisateur': utilisateur, 'sport': sport }
+            print(trinome)
+            print(compteur)
+            tableau.append(trinome)
+            compteur += 1
+
+
+    return render(request, "leaderboard.html",locals())
 	
 def previousweeks(request):
     if not request.user.is_authenticated:
