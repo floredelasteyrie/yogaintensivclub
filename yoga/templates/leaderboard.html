@@ -11,10 +11,50 @@
 
 {% block content %}
 
-		<p>
-        {%  for tab in tableau %}
-            {{ tab.utilisateur.first_name }} a fait {{ tab.temps }} min en {{ tab.sport }} </br>
-        {% endfor %}
-		</p>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-3">
+            <h3>Yoga</h3>
+                <p>
+                {%  for tab in tableau1 %}
+                    {{ tab.utilisateur.first_name }} a fait {{ tab.temps }} min </br>
+                {% endfor %}
+                </p>
+        </div>
 
+        <div class="col-md-3">
+        <h3>Top Body Challenge</h3>
+            <p>
+            {%  for tab in tableau2 %}
+                {{ tab.utilisateur.first_name }} a fait {{ tab.temps }} min </br>
+            {% endfor %}
+            </p>
+        </div>
+
+        <div class="col-md-3">
+        <h3>Cours les Mills</h3>
+            <p>
+            {%  for tab in tableau3 %}
+                {{ tab.utilisateur.first_name }} a fait {{ tab.temps }} min </br>
+            {% endfor %}
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-4">
+            <h3>Elliptique</h3>
+                <p>
+                {%  for tab in tableau4 %}
+                    {{ tab.utilisateur.first_name }} a fait {{ tab.temps }} min </br>
+                {% endfor %}
+                </p>
+        </div>
+        <div class="col-md-4">
+            <h3>Jogging</h3>
+                <p>
+                {%  for tab in tableau5 %}
+                    {{ tab.utilisateur.first_name }} a fait {{ tab.temps }} min </br>
+                {% endfor %}
+                </p>
+        </div>
+    </div>
 {% endblock %}
