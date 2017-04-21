@@ -12,7 +12,7 @@
             </div>
             </div>
 
-			<div class="col-lg-6" style="text-align: center; margin-top: 2em;">
+			<div class="col-md-4 col-md-offset-2 col-sm-6" style="text-align: center; margin-top: 2em;">
 			<section id="Activity"><!--Activity -->
 
 					<!-- Form Name -->
@@ -20,8 +20,8 @@
 
 					<form method="post">
 					    {% csrf_token %}
-					    <p>Quel sport ? {{ form.sport }}</p>
-					    <p>Quelle durée (en min) ? {{ form.duree }}</p>
+					    <p> Quel sport ? {{ form.sport }} </p>
+					    <p> Quelle durée (en min) ? {{ form.duree }} </p>
 					    
 					    <button type="submit">Submit</button>
 					</form>
@@ -31,7 +31,7 @@
 			</section>
 			</div>
 
-			<div class="col-lg-6" style="text-align: center; margin-top: 2em;">
+			<div class="col-md-4 col-sm-6" style="text-align: center; margin-top: 2em;">
 			<section id="Leaderboard"> <!-- Leader board -->
 				<h2> Leaderboard</h2>
 				<h3> Week: 20th February</h3>
