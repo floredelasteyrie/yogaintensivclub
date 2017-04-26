@@ -30,6 +30,7 @@ def connexion(request):
     return render(request, "login.html", locals())
 
 
+
 def home(request):
     if not request.user.is_authenticated:
         return redirect("/login")
@@ -39,10 +40,12 @@ def home(request):
         if form.is_valid():
             selectsport = form.cleaned_data['sport']
             selectdurée = form.cleaned_data['duree']
+            selectdate = form.cleaned_data['date']
             activité = Activity()
             activité.sport = selectsport
             activité.durée = selectdurée
             activité.user = request.user
+            activité.date = selectdate
             activité.save()
             envoi = True
 

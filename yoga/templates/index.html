@@ -22,6 +22,7 @@
 					    {% csrf_token %}
 					    <p> Quel sport ? {{ form.sport }} </p>
 					    <p> Quelle durée (en min) ? {{ form.duree }} </p>
+                        <p> Quand? {{ form.date }}
 					    
 					    <button type="submit">Submit</button>
 					</form>
@@ -34,7 +35,7 @@
 			<div class="col-md-4 col-sm-6" style="text-align: center; margin-top: 2em;">
 			<section id="Leaderboard"> <!-- Leader board -->
 				<h2> Leaderboard</h2>
-				<h3> Week: 20th February</h3>
+				<h3> {{ time }} </h3>
 				<ul>
 					<li> Number 1: </li>
 					<li> Number 2: </li>
