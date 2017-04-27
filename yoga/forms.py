@@ -1,5 +1,6 @@
 from django import forms
 from . models import *
+import datetime
 
 class ConnexionForm(forms.Form):
     username = forms.CharField(label="Nom d'utilisateur", max_length=30)
@@ -13,3 +14,5 @@ class ActivityForm(forms.Form):
               ("Jogging", "Jogging")]
     duree = forms.IntegerField()
     sport = forms.ChoiceField(choices=SPORTS)
+    date = forms.DateTimeField(initial=datetime.date.today)
+

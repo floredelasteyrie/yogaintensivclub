@@ -13,25 +13,25 @@
 
 <div class="col-md-offset-1 col-md-10">
     <div class="row">
-    <h3 style="color: teal;">Toutes catégories</h3>
+    <h3 style="color: teal;">Tous sports confondus</h3>
     <div style="border-bottom: 1px solid teal"></div>
         <div class="col-sm-4">
-            <h4>Par durée</h4>
+            <h4>La plus courageuse</h4>
                 <p>
-                {%  for tab in tableau6 %}
+                {%  for tab in tableau6|dictsortreversed:"temps" %}
                     {{ tab.utilisateur.first_name }} a fait {{ tab.temps }} min </br>
                 {% endfor %}
                 </p>
         </div>
         <div class="col-sm-4">
-            <h4>Par calories</h4>
-                {%  for tab in tab_calories %}
+            <h4>La plus svelte</h4>
+                {%  for tab in tab_calories|dictsortreversed:"calories" %}
                     {{ tab.utilisateur.first_name }} a brûlé {{ tab.calories }} calories </br>
                 {% endfor %}
         </div>
         <div class="col-sm-4">
-            <h4>Par récurrence</h4>
-                {%  for tab in tableau6 %}
+            <h4>La plus régulière</h4>
+                {%  for tab in tableau6|dictsortreversed:"fois" %}
                     {{ tab.utilisateur.first_name }} a fait du sport {{ tab.fois }} fois </br>
                 {% endfor %}
         </div>

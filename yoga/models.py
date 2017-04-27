@@ -9,5 +9,5 @@ class Activity(models.Model):
               ("Jogging", "Jogging")]
     sport = models.CharField(max_length=10, choices= SPORTS)
     durée = models.IntegerField()
-    date = models.DateTimeField(auto_now_add=True, auto_now=False)
+    date = models.DateTimeField(auto_now_add=False, auto_now=False)
     user = models.ForeignKey(User, null = True)

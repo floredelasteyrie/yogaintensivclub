@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+                  #'debug_toolbar',
 	'yoga'
 ]
 
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+              #'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'yoga_app.urls'
@@ -74,6 +76,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'yoga_app.wsgi.application'
+
+#For the debug toolbar
+#INTERNAL_IPS = [
+#'127.0.0.1'
+#]
 
 
 # Database
@@ -124,6 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Uncomment for the debug-toolbar STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
 	os.path.join(BASE_DIR, "static"),

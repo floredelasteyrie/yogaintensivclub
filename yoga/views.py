@@ -3,7 +3,8 @@ from django.contrib.auth import logout, authenticate, login
 from .forms import *
 from .models import *
 import math
-
+#from operator import itemgetter, attrgetter
+import operator
 
 def deconnexion(request):
     logout(request)
@@ -48,7 +49,6 @@ def home(request):
             activité.date = selectdate
             activité.save()
             envoi = True
-
             return redirect("/activity")
 
     else:
@@ -81,6 +81,8 @@ def leaderboard(request):
     tableau1 = []
     calories1 = []
     compteur1 = 1
+    
+#tableau1 contient, pour l'activité yoga: temps/utilisateur/calories
     for utilisateur in userlist:
         activitylist1 = Activity.objects.filter(user=utilisateur, sport="Yoga")
         temps = 0
@@ -92,6 +94,7 @@ def leaderboard(request):
 
     tableau2 = []
     compteur2 = 1
+#tableau2 contient, pour l'activité TBC: temps/utilisateur/calories
     for utilisateur in userlist:
         activitylist2 = Activity.objects.filter(user=utilisateur, sport="Top Body Challenge")
         temps = 0
@@ -166,6 +169,8 @@ def leaderboard(request):
                 cal_totales = math.floor(cal_totales)
         cor_calories = {'utilisateur': utilisateur, 'calories': cal_totales}
         tab_calories.append(cor_calories)
+                #tab_calories.sort(key=operator.itemgetter[1])
+                # tab_calories.sort(key = lambda tab_calories: tab_calories[calories])
 
     return render(request, "leaderboard.html", locals())
 
