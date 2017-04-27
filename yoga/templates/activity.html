@@ -6,32 +6,72 @@
     <li><a href="/">Home</a></li>
     <li class="active"><a href="/activity">Activity</a></li>
     <li><a href="/leaderboard">Leaderboard</a></li>
-    <li><a href="/previousweeks">Previous weeks</a></li>
+    <li><a href="/weekly">Weekly</a></li>
 {% endblock %}
 
 {% block content %}
 
-	<div class="col-md-10 col-md-offset-1" style="text-align: center;">
+	<div class="col-md-3 col-md-offset-1" style="text-align: center;">
 		<br /><br />
-		<h2> Your activity </h2>
+		<h1> Flore </h1>
 		{% for activité in activitées %}
-
+            {%  if activité.user.first_name == "Flore" %}
 			<h3>{{ activité.sport }}
                 {%  if request.user == activité.user %}
                     <a href="/suppr_activity/{{ activité.id }}" id="suppr">
                         <span class="glyphicon glyphicon-remove" style="color: black; font-size: 15px;"></span>
                     </a>
-                {%  endif %}
+                    {%  endif %}
             </h3>
-            <p><strong>{{  activité.durée }} min</strong> - le {{ activité.date }} par  <strong>{{ activité.user.first_name }}</strong></p>
-
-
-
+            <p><strong>{{  activité.durée }} min</strong> - le {{ activité.date }} </p>
+            {%  endif %}
 		{% empty %}
 		<p> No activity .. </p>
 		{% endfor %}
 		<p>
 		</p>
 	</div>
+
+<div class="col-md-3 col-md-offset-1" style="text-align: center;">
+    <br /><br />
+    <h1> Diane </h1>
+    {% for activité in activitées %}
+    {%  if activité.user.first_name == "Diane" %}
+    <h3>{{ activité.sport }}
+        {%  if request.user == activité.user %}
+        <a href="/suppr_activity/{{ activité.id }}" id="suppr">
+            <span class="glyphicon glyphicon-remove" style="color: black; font-size: 15px;"></span>
+        </a>
+        {%  endif %}
+    </h3>
+    <p><strong>{{  activité.durée }} min</strong> - le {{ activité.date }} </p>
+    {%  endif %}
+    {% empty %}
+    <p> No activity .. </p>
+    {% endfor %}
+    <p>
+    </p>
+</div>
+
+<div class="col-md-3 col-md-offset-1" style="text-align: center;">
+    <br /><br />
+    <h1> Steph </h1>
+    {% for activité in activitées %}
+    {%  if activité.user.first_name == "Steph" %}
+    <h3>{{ activité.sport }}
+        {%  if request.user == activité.user %}
+        <a href="/suppr_activity/{{ activité.id }}" id="suppr">
+            <span class="glyphicon glyphicon-remove" style="color: black; font-size: 15px;"></span>
+        </a>
+        {%  endif %}
+    </h3>
+    <p><strong>{{  activité.durée }} min</strong> - le {{ activité.date }} </p>
+    {%  endif %}
+    {% empty %}
+    <p> No activity .. </p>
+    {% endfor %}
+    <p>
+    </p>
+</div>
 
 {% endblock %}

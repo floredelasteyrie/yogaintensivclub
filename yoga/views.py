@@ -3,8 +3,8 @@ from django.contrib.auth import logout, authenticate, login
 from .forms import *
 from .models import *
 import math
-#from operator import itemgetter, attrgetter
 import operator
+import datetime
 
 def deconnexion(request):
     logout(request)
@@ -78,11 +78,11 @@ def leaderboard(request):
         return redirect("/login")
 
     userlist = User.objects.all()
+
+#tableau1 contient, pour l'activité yoga: temps/utilisateur/calories
     tableau1 = []
     calories1 = []
     compteur1 = 1
-    
-#tableau1 contient, pour l'activité yoga: temps/utilisateur/calories
     for utilisateur in userlist:
         activitylist1 = Activity.objects.filter(user=utilisateur, sport="Yoga")
         temps = 0
@@ -92,9 +92,9 @@ def leaderboard(request):
         tableau1.append(binome1)
         compteur1 += 1
 
+#tableau2 contient, pour l'activité TBC: temps/utilisateur/calories
     tableau2 = []
     compteur2 = 1
-#tableau2 contient, pour l'activité TBC: temps/utilisateur/calories
     for utilisateur in userlist:
         activitylist2 = Activity.objects.filter(user=utilisateur, sport="Top Body Challenge")
         temps = 0
@@ -104,6 +104,7 @@ def leaderboard(request):
         tableau2.append(binome2)
         compteur2 += 1
 
+#tableau3 contient, pour l'activité Les Mills: temps/utilisateur/calories
     tableau3 = []
     compteur3 = 1
     for utilisateur in userlist:
@@ -115,6 +116,7 @@ def leaderboard(request):
         tableau3.append(binome3)
         compteur3 += 1
 
+#tableau4 contient, pour l'activité Eliptique: temps/utilisateur/calories
     tableau4 = []
     compteur4 = 1
     for utilisateur in userlist:
@@ -126,6 +128,7 @@ def leaderboard(request):
         tableau4.append(binome4)
         compteur4 += 1
 
+#tableau5 contient, pour l'activité jogging: temps/utilisateur/calories
     tableau5 = []
     compteur5 = 1
     for utilisateur in userlist:
@@ -137,6 +140,7 @@ def leaderboard(request):
         tableau5.append(binome5)
         compteur5 += 1
 
+#tableau6 contient temps/utilisateur/fois
     tableau6 = []
     for utilisateur in userlist:
         activitylist6 = Activity.objects.filter(user=utilisateur)
@@ -148,6 +152,7 @@ def leaderboard(request):
         binome6 = {'temps': temps, 'utilisateur': utilisateur, 'fois': compteur6}
         tableau6.append(binome6)
 
+#tab_calories est un dictionnaire contenant utilisateur/calories pour chaque utilisateur
     tab_calories = []
     for utilisateur in userlist:
         cal_totales = 0
@@ -169,17 +174,32 @@ def leaderboard(request):
                 cal_totales = math.floor(cal_totales)
         cor_calories = {'utilisateur': utilisateur, 'calories': cal_totales}
         tab_calories.append(cor_calories)
-                #tab_calories.sort(key=operator.itemgetter[1])
-                # tab_calories.sort(key = lambda tab_calories: tab_calories[calories])
 
     return render(request, "leaderboard.html", locals())
 
 
-def previousweeks(request):
+def weekly(request):
     if not request.user.is_authenticated:
         return redirect("/login")
 
-    return render(request, "weekly.html")
+    today = datetime.date.today()
+    start_week = today - datetime.timedelta(today.weekday())
+    end_week = start_week + datetime.timedelta(7)
+    
+    userlist = User.objects.all()
+#tableau6 contient temps/utilisateur/fois
+    tableau6 = []
+    for utilisateur in userlist:
+        activitylist6 = Activity.objects.filter(date__range=[start_week, end_week], user = utilisateur)
+        compteur6 = 0
+        temps = 0
+        for activitée in activitylist6:
+            compteur6 += 1
+            temps += activitée.durée
+        binome6 = {'temps': temps, 'utilisateur': utilisateur, 'fois': compteur6}
+        tableau6.append(binome6)
+
+    return render(request, "weekly.html", locals())
 
 
 def liens(request):
