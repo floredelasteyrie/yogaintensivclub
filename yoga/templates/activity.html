@@ -11,67 +11,33 @@
 
 {% block content %}
 
-	<div class="col-md-3 col-md-offset-1" style="text-align: center;">
-		<br /><br />
-		<h1> Flore </h1>
-		{% for activité in activitées %}
-            {%  if activité.user.first_name == "Flore" %}
-			<h3>{{ activité.sport }}
-                {%  if request.user == activité.user %}
-                    <a href="/suppr_activity/{{ activité.id }}" id="suppr">
-                        <span class="glyphicon glyphicon-remove" style="color: black; font-size: 15px;"></span>
-                    </a>
-                    {%  endif %}
-            </h3>
-            <p><strong>{{  activité.durée }} min</strong> - le {{ activité.date }} </p>
-            {%  endif %}
-		{% empty %}
-		<p> No activity .. </p>
-		{% endfor %}
+    {% for user in userlist %}
+        <div class="col-md-3 col-md-offset-1" style="text-align: center;">
+        <br /><br />
+        <h1> {{ user.first_name }} </h1>
+        {% regroup activitées|dictsort:"sport" by sport as activitées_sport %}
+            {% for act in activitées_sport %}
+                <h3>{{ act.grouper }}</h3>
+                {% for activité in act.list %}
+                    {%  if activité.user == user %}
+                        <p><strong>{{  activité.durée }} min</strong> - le {{ activité.date }}
+                        {%  if user == request.user %}
+                            <a href="/suppr_activity/{{ activité.id }}" id="suppr" title="Delete this session">
+                                <span class="glyphicon glyphicon-remove" style="color: black; font-size: 15px;"></span>
+                            </a></p>
+                        {% endif %} <!-- am I the user? -->
+                    {% endif %} <!-- activité.user -->
+                {% endfor %} <!-- act.list -->
+            {% empty %}
+                <p> No activity ... </p>
+            {% endfor %} <!-- activitées_sport -->
+            </div>
+
+            {% empty %}
+                <p> No user ... </p>
+        {% endfor %} <!-- userlist -->
 		<p>
 		</p>
 	</div>
-
-<div class="col-md-3 col-md-offset-1" style="text-align: center;">
-    <br /><br />
-    <h1> Diane </h1>
-    {% for activité in activitées %}
-    {%  if activité.user.first_name == "Diane" %}
-    <h3>{{ activité.sport }}
-        {%  if request.user == activité.user %}
-        <a href="/suppr_activity/{{ activité.id }}" id="suppr">
-            <span class="glyphicon glyphicon-remove" style="color: black; font-size: 15px;"></span>
-        </a>
-        {%  endif %}
-    </h3>
-    <p><strong>{{  activité.durée }} min</strong> - le {{ activité.date }} </p>
-    {%  endif %}
-    {% empty %}
-    <p> No activity .. </p>
-    {% endfor %}
-    <p>
-    </p>
-</div>
-
-<div class="col-md-3 col-md-offset-1" style="text-align: center;">
-    <br /><br />
-    <h1> Steph </h1>
-    {% for activité in activitées %}
-    {%  if activité.user.first_name == "Steph" %}
-    <h3>{{ activité.sport }}
-        {%  if request.user == activité.user %}
-        <a href="/suppr_activity/{{ activité.id }}" id="suppr">
-            <span class="glyphicon glyphicon-remove" style="color: black; font-size: 15px;"></span>
-        </a>
-        {%  endif %}
-    </h3>
-    <p><strong>{{  activité.durée }} min</strong> - le {{ activité.date }} </p>
-    {%  endif %}
-    {% empty %}
-    <p> No activity .. </p>
-    {% endfor %}
-    <p>
-    </p>
-</div>
 
 {% endblock %}

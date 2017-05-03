@@ -60,8 +60,9 @@ def activity(request):
     if not request.user.is_authenticated:
         return redirect("/login")
 
-    activité = Activity.objects.all().order_by("-date")
-    return render(request, "activity.html", {'activitées': activité})
+    activitées = Activity.objects.all().order_by("-date")
+    userlist = User.objects.all()
+    return render(request, "activity.html", locals())
 
 
 def suppr_activity(request, ide):
@@ -152,7 +153,7 @@ def leaderboard(request):
         binome6 = {'temps': temps, 'utilisateur': utilisateur, 'fois': compteur6}
         tableau6.append(binome6)
 
-#tab_calories est un dictionnaire contenant utilisateur/calories pour chaque utilisateur
+#tab_calories est un dictionnaire contenant utilisateur/calories
     tab_calories = []
     for utilisateur in userlist:
         cal_totales = 0

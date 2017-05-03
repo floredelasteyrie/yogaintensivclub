@@ -15,4 +15,3 @@ class ActivityForm(forms.Form):
     duree = forms.IntegerField()
     sport = forms.ChoiceField(choices=SPORTS)
     date = forms.DateTimeField(initial=datetime.date.today)
-

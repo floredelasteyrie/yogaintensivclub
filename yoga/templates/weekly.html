@@ -14,13 +14,14 @@
 
 
 <div class="col-sm-10" style="text-align: center;">
-    <h1> This week's leaderboard</h1>
+    <h2> This week's leaderboard</h2>
     <p>
     {%  for tab in tableau6|dictsortreversed:"temps" %}
     {{ tab.utilisateur.first_name }} a fait {{ tab.temps }} minutes de sport </br>
     {{ tab.utilisateur.first_name }} a fait du sport {{ tab.fois }} fois </br>
     {% endfor %}
     </p>
+    <h2> <a href=""> Previous weeks </a> </h2>
 </div>
 		<p>
 		</p>
