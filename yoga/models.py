@@ -18,3 +18,8 @@ class Activity(models.Model):
     date = models.DateTimeField(auto_now_add=False, auto_now=False)
     user = models.ForeignKey(User, null = True)
 
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    friendwith = models.ManyToManyField('self', related_name='friend_with', symmetrical=True)
+
