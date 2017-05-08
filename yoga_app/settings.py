@@ -30,7 +30,8 @@ SECRET_KEY = 'f87$&ixo9z*#_4ce$d(&&3m9hqemsvror#v#pkns3jrb6#a5#o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.intensiveclub.com']
+
 
 
 # Application definition
